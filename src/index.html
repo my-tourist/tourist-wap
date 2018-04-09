@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>tourist-wap</title>
+  </head>
+  <script>
+    /**
+     * 可伸缩布局方案
+     * rem计算方式：设计图尺寸px / 100 = 实际rem  【例: 100px = 1rem，32px = .32rem】
+     */
+    ! function (window) {
+
+      /* 设计图文档宽度 */
+      var docWidth = 750;
+
+      var doc = window.document,
+        docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+
+      var recalc = (function refreshRem() {
+        var clientWidth = docEl.getBoundingClientRect().width;
+        console.log(clientWidth, clientWidth / 10);
+
+        docEl.style.fontSize = clientWidth > 750 ?  docWidth / 10 + 'px' : clientWidth / 10 + 'px';
+
+        return refreshRem;
+      })();
+
+      /* 添加倍屏标识，安卓为1 */
+      docEl.setAttribute('data-dpr', window.navigator.appVersion.match(/iphone/gi) ? window.devicePixelRatio : 1);
+
+      if (/iP(hone|od|ad)/.test(window.navigator.userAgent)) {
+        /* 添加IOS标识 */
+        doc.documentElement.classList.add('ios');
+        /* IOS8以上给html添加hairline样式，以便特殊处理 */
+        if (parseInt(window.navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/)[1], 10) >= 8)
+          doc.documentElement.classList.add('hairline');
+      }
+
+      if (!doc.addEventListener) return;
+      window.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+
+      window.addEventListener('resize', function () {
+        if (document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+          window.setTimeout(function () {
+            document.activeElement.scrollIntoViewIfNeeded();
+          }, 0);
+        }
+      })
+
+    }(window);
+
+  </script>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #F9F9F9;
+      -webkit-overflow-scrolling: touch;
+      font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+      Microsoft YaHei, SimSun, sans-serif;
+    }
+    body > a {
+      display: none;
+    }
+    a,
+    img {
+      -webkit-touch-callout: none; /*禁止长按链接与图片弹出菜单*/
+    }
+    html{
+      font-size: 55.2px;
+    }
+    html,
+    body {
+      -webkit-user-select: none; /* 禁止选中文本（如无文本选中需求，此为必选项） */
+      user-select: none;
+    }
+    .banner-wrap img{
+      width:100% !important;
+    }
+    ::-webkit-scrollbar {
+      width: 0;
+      height:0;
+      display:none;
+    }
+    ::-moz-placeholder {
+      color: #DEDEDE;
+      font-size: 0.36rem;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+    ul li{
+      list-style: none;
+    }
+  </style>
+</html>
