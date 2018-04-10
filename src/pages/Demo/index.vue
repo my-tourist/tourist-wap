@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <p>this is HomePage</p>
-    <div class="a" @click="changeSign"> to Demo </div>
-  </div>
+  <div class="a" @click="changeSign">this is Demo</div>
 </template>
 
 <script>
@@ -21,8 +18,7 @@ export default {
   },
   methods: {
     changeSign () {
-      // this.$store.commit('changeSign')
-      this.$router.push('demo')
+      this.$store.commit('changeSign')
     }
   }
 }

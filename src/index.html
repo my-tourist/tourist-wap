@@ -21,7 +21,6 @@
 
       var recalc = (function refreshRem() {
         var clientWidth = docEl.getBoundingClientRect().width;
-        console.log(clientWidth, clientWidth / 10);
 
         docEl.style.fontSize = clientWidth > 750 ?  docWidth / 10 + 'px' : clientWidth / 10 + 'px';
 

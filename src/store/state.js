@@ -1,0 +1,3 @@
+export default {
+  isSign: true
+}
