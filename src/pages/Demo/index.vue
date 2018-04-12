@@ -28,6 +28,5 @@ export default {
 <style scoped>
   .a{
     font-size: 1rem;
-    width: 10rem;
   }
 </style>

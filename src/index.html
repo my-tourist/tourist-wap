@@ -22,7 +22,7 @@
       var recalc = (function refreshRem() {
         var clientWidth = docEl.getBoundingClientRect().width;
 
-        docEl.style.fontSize = clientWidth > 750 ?  docWidth / 10 + 'px' : clientWidth / 10 + 'px';
+        docEl.style.fontSize = clientWidth > 750 ?  100 + 'px' : clientWidth / docWidth * 100 + 'px';
 
         return refreshRem;
       })();
