@@ -14,8 +14,8 @@ export default {
   },
   watch: {
     $route (to, from) {
-      this.hasFooter = to.meta.hasFooter;
-      console.log(to, from);
+      this.hasFooter = to.meta.hasFooter
+      console.log(to, from)
     }
   }
 }
