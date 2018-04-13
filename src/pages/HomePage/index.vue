@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import HelloWorld from '../../components/HelloWorld.vue'
+import { mapState } from 'vuex';
+import HelloWorld from '../../components/HelloWorld.vue';
 export default {
   name: 'homePage',
   computed: mapState({
