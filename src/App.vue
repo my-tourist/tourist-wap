@@ -1,6 +1,12 @@
 <template>
-  <div id="app">
-    <router-view/>
+  <div id="app" :flex="flex">
+    <app-header v-if="hasHeader" hasMessage="true" />
+    <keep-alive>
+    <app-main>
+      <router-view/>
+    </app-main>
+    </keep-alive>
+    <app-footer v-if="hasFooter" />
   </div>
 </template>
 
@@ -9,19 +15,42 @@ export default {
   name: 'App',
   data () {
     return {
-      hasFooter: true
+      hasFooter: true,
+      hasHeader: true,
+      flex: ''
     }
   },
   watch: {
     $route (to, from) {
-      this.hasFooter = to.meta.hasFooter
       console.log(to, from)
+      const { hasFooter, hasHeader } = to.meta
+      this.hasFooter = hasFooter
+      this.hasHeader = hasHeader
+      this.watchRoute(hasHeader, hasFooter)
+    }
+  },
+  created () {
+    this.watchRoute(this.hasHeader, this.hasFooter)
+  },
+  methods: {
+    watchRoute (hasHeader, hasFooter) {
+      let flex = 'dir:top '
+      if (hasFooter && hasHeader) {
+        flex += 'box:justify'
+      } else if (hasHeader) {
+        flex += 'box:first'
+      } else if (hasFooter) {
+        flex += 'box:last'
+      }
+      console.log(flex)
+      this.flex = flex
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "pages/assets/css/main";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

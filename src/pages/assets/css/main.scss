@@ -1,0 +1,26 @@
+@import "./var";
+
+.bg-1{
+  background-color: $color-1;
+}
+
+.bg-2{
+  background-color: $color-2;
+}
+
+.fs-lg{
+  font-size: $fs-lg;
+}
+
+.fs-sm{
+  font-size: $fs-sm;
+}
+
+.pl-md{
+  padding-left: $pl-md;
+}
+
+.plr-md{
+  padding-left: $pl-md;
+  padding-right: $pl-md;
+}
